@@ -1,0 +1,745 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hassan Bitar is a mechatronics engineering student at LAU focused on safe autonomous systems, modular robotics, and assistive rehabilitation technologies.">
+<title>Hassan Bitar | Academic Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div id="topbar-name" class="topbar-name"></div>
+  <nav id="tab-nav" class="tab-nav" aria-label="Primary sections"></nav>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <img id="profile-image" class="profile" alt="Profile photo placeholder for Hassan Bitar">
+    <h1 id="sidebar-name" class="name"></h1>
+    <p id="sidebar-role" class="role"></p>
+    <p id="sidebar-location" class="meta"></p>
+    <p id="sidebar-affiliation" class="meta"></p>
+
+    <div id="social-links" class="social"></div>
+
+    <div class="subnav-block">
+      <p id="subnav-title" class="subnav-title"></p>
+      <div id="sidebar-subnav"></div>
+    </div>
+  </aside>
+
+  <main id="main-content" class="content" aria-live="polite">
+    <section id="panel-projects" class="panel active" data-panel="projects"></section>
+    <section id="panel-publications" class="panel" data-panel="publications"></section>
+    <section id="panel-cvexp" class="panel" data-panel="cvexp"></section>
+  </main>
+</div>
+
+<script>
+const DATA = {
+  pageTitle: "Hassan Bitar | Academic Website",
+  metaDescription: "Hassan Bitar is a mechatronics engineering student at LAU focused on safe autonomous systems, modular robotics, and assistive rehabilitation technologies.",
+
+  name: "Hassan Bitar",
+  role: "Mechatronics Engineering Student",
+  location: "Byblos, Lebanon",
+  affiliation: "Lebanese American University",
+  email: "bitar.hassan51@gmail.com",
+  linkedin: "https://linkedin.com/in/hassan-bitar1",
+  github: "",
+  googleScholar: "",
+  cv: "./Hassan_Bitar_CV_Fulbright.pdf",
+  profileImage: "https://placehold.co/240x240/161b22/58a6ff?text=HB",
+
+  bio: `Mechatronics engineering undergraduate at LAU (CGPA 3.96/4.00) with one accepted conference paper and two IEEE submissions under review. Research interests include safe autonomous systems, modular robotics, and assistive rehabilitation technologies, especially where engineering can improve quality of life.
+
+I am pursuing graduate study in robotics and control engineering to develop safe and assistive technologies that address real-world challenges, with a long-term goal of contributing to research and meaningful technological development in Lebanon and the broader region. Outside the lab, I lead student organizations, mentor peers through academic challenges, and build cross-sector partnerships with a strong commitment to service.`,
+
+  tabs: [
+    { id: "projects", label: "Projects" },
+    { id: "publications", label: "Publications" },
+    { id: "cvexp", label: "CV & Experience" }
+  ],
+
+  cvSubsections: [
+    { id: "cv-education", label: "Education" },
+    { id: "cv-research", label: "Research" },
+    { id: "cv-teaching", label: "Teaching" },
+    { id: "cv-leadership", label: "Leadership" },
+    { id: "cv-skills", label: "Skills" },
+    { id: "cv-awards", label: "Awards" }
+  ],
+
+  publications: [
+    {
+      title: "Breakage Detection via Sensor Fusion in Modular-Robot-Based Programmable Matter",
+      venue: "AINA",
+      year: 2026,
+      status: "accepted",
+      authors: "H. Bitar, J. Bassil, N. Maalouf, B. Piranda, A. Makhoul, J. Tekli",
+      url: "",
+      abstract: "Self-reconfigurable modular robotic systems require reliable mechanisms to detect structural failures that may compromise successful reconfiguration. In this work, we propose a sensor fusion approach for real-time breakage detection in modular robot-based programmable matter. Force-sensitive resistors (FSRs) and inertial measurement units (IMUs) were integrated on selected modules to monitor lateral strain and tilt during reconfiguration. Their outputs were processed by a fuzzy inference system running on a stationary processing unit to estimate structural stability. The approach was experimentally validated using a cantilever configuration built with Blinky Blocks, where progressive loading was simulated by sequentially adding blocks. The fusion system successfully identified pre-failure conditions, providing early warnings prior to mechanical breakage. This sensor-based method offers a complementary safety mechanism to existing model-based mechanical failure detection algorithms, enabling real-time failure detection based on direct physical measurements."
+    },
+    {
+      title: "Time-Varying Robust Sampled-Data High-Order Control Barrier Functions with Variable Sampling",
+      venue: "IEEE Control Systems Letters",
+      year: 2026,
+      status: "under-review",
+      authors: "H. Bitar, N. Maalouf",
+      url: "",
+      abstract: "Safety-critical robots increasingly operate in dynamic environments where safety specifications evolve over time (e.g., moving obstacles) and control inputs are applied digitally via zero-order-hold at a fixed, often conservative update rate. These challenges are addressed within a unified robust sampled-data high-order control barrier function (HOCBF) framework. The sampled-data doubly robust HOCBF condition is extended to time-varying safe sets by incorporating barrier time derivatives and a tightening term that certifies inter-sample safety under explicit time variation. A reachability-certified variable holding-time policy is then introduced, selecting the next update interval online via a scalar feasibility test of the safety-filtered input, allowing longer holds away from constraint activation and shorter updates near constraint-active regions. Validation on a unicycle with a moving circular keep-out set and on a QBot digital twin shows that the time-varying treatment restores safety where a time-invariant baseline fails, while the variable holding-time policy reduces conservatism and unnecessary updates while maintaining forward invariance."
+    },
+    {
+      title: "MoSI: A Sensor-Fused Margin of Stability at Interfaces for Modular Robots",
+      venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+      year: 2026,
+      status: "under-review",
+      authors: "H. Bitar, J. Bassil, N. Maalouf, B. Piranda, A. Makhoul",
+      url: "",
+      abstract: "Abstract withheld while submission is under review for IROS 2026. A full abstract and publication links will be added when the review cycle is complete."
+    }
+  ],
+
+  research: [
+    {
+      title: "Undergraduate Researcher",
+      org: "Lebanese American University, Byblos",
+      period: "Oct 2025 - Present",
+      bullets: [
+        "Developed a sampled-data control barrier function safety filter in MATLAB for mobile-robot navigation under bounded disturbances and sensing uncertainty, contributing to a submission to IEEE Control Systems Letters.",
+        "Extended the framework to time-varying obstacles and variable sampling, improving safety guarantees in dynamic environments while reducing computation when robots operate far from constraints.",
+        "Validated the controller on the QBot digital twin in Simulink using closed-loop simulations with odometry- and IMU-based state estimation."
+      ]
+    },
+    {
+      title: "Research Intern",
+      org: "FEMTO-ST Institute, Montbeliard, France",
+      period: "May 2025 - Sep 2025",
+      bullets: [
+        "Designed a stability metric for modular robotic systems by combining geometric margins with FSR and IMU data, enabling robots to detect and prevent structural failure in real time.",
+        "Built and validated three algorithmic variants that achieved more than 90% accuracy across ten cantilever trials.",
+        "Ported algorithms from embedded ESP32 hardware to the Webots simulator, enabling scalability tests across more than ten module configurations; results contributed to an AINA 2026 acceptance and an IROS 2026 submission."
+      ]
+    }
+  ],
+
+  teaching: [
+    {
+      role: "Teaching Assistant, Mechatronics System Design 2",
+      org: "Lebanese American University, Byblos",
+      period: "Jan 2026 - Present",
+      bullets: [
+        "Support course delivery by proctoring exams, correcting assignments, and holding office hours to assist students with hands-on mechatronics design challenges.",
+        "Appointed by the department based on academic performance, providing direct support to the course instructor and reinforcing student understanding of integrated mechanical and electronic system design."
+      ]
+    },
+    {
+      role: "Academic Tutor, Control Systems, Logic Design, and Microprocessors",
+      org: "Lebanese American University, Byblos",
+      period: "Sep 2024 - Present",
+      bullets: [
+        "Mentor students individually and in groups through LAU's official tutoring program, contributing to an average grade improvement of 30% across tutees.",
+        "Adapt explanations to varied learning styles and knowledge gaps, helping students build confidence in mathematically intensive subjects such as state-space control and digital logic.",
+        "Selected by the university tutoring office based on academic standing and peer feedback, reflecting strong communication skills and the ability to explain technical concepts clearly."
+      ]
+    }
+  ],
+
+  projects: [
+    {
+      id: "basil",
+      name: "B.A.S.I.L. (Better Actuation of Spot Ignited at LAU)",
+      subtitle: "Quadruped locomotion simulation and control framework supporting safe controller and gait development without hardware risk.",
+      bullets: [
+        "Modeled Boston Dynamics Spot as a floating-base multibody system in Drake and built separate design and runtime simulation plants with contact handling and Meshcat visualization.",
+        "Designed and benchmarked standing controllers, then extended the framework into an underactuated diagonal-trot controller validated through inverse dynamics and real-time MPC at 100 Hz."
+      ],
+      tags: ["Drake", "MPC", "Meshcat", "Python"],
+      driveUrl: "", // TODO: add Google Drive or GitHub URL when available
+      githubUrl: "" // TODO: add Google Drive or GitHub URL when available
+    },
+    {
+      id: "kare",
+      name: "K.A.R.E. (Knee Assistive Rehabilitation Exoskeleton)",
+      subtitle: "Pain-aware knee exoskeleton that adapts assistive torque in real time based on physiological signals.",
+      bullets: [
+        "Designed a single-joint, belt-driven BLDC exoskeleton under 2 kg with a modular 3D-printed brace; completed mechanical design and FEA with a factor of safety near 6.7 and sub-millimeter deflection.",
+        "Specified a multimodal sensing architecture using EMG, EDA, and PPG on an ESP32 wearable node streaming to a Raspberry Pi for real-time strain-index computation and torque adaptation."
+      ],
+      tags: ["Assistive Robotics", "FEA", "ESP32", "Raspberry Pi"],
+      driveUrl: "", // TODO: add Google Drive or GitHub URL when available
+      githubUrl: "" // TODO: add Google Drive or GitHub URL when available
+    },
+    {
+      id: "ruins-lifting-rescue-robot",
+      name: "Ruins Lifting Rescue Robot",
+      subtitle: "Autonomous thermal-seeking rover that locates survivors in rubble and deploys a robotic arm for first contact.",
+      bullets: [
+        "Implemented thermal centering and obstacle-aware stopping for reliable autonomous navigation.",
+        "Developed a Python pipeline for MLX90640 thermal processing and L298N motor control with retries, filtering, and pixel correction, then integrated proximity-gated 6-DOF arm control."
+      ],
+      tags: ["Python", "MLX90640", "Autonomous Navigation"],
+      driveUrl: "", // TODO: add Google Drive or GitHub URL when available
+      githubUrl: "" // TODO: add Google Drive or GitHub URL when available
+    },
+    {
+      id: "fuzzy-controlled-biped-robot",
+      name: "Fuzzy-Controlled Biped Robot",
+      subtitle: "Self-balancing bipedal robot combining low-cost hardware with intelligent control.",
+      bullets: [
+        "Implemented a closed-loop fuzzy controller combining IMU orientation and FSR data to choose corrective actions such as tilt, hinge, or step.",
+        "Ran a 50-100 ms control loop on Raspberry Pi 5 with PCA9685, ADS1115, MPU9250, and MG996R servos, while mitigating IMU drift by resetting after each action."
+      ],
+      tags: ["Fuzzy Control", "Raspberry Pi 5", "Embedded Systems"],
+      driveUrl: "", // TODO: add Google Drive or GitHub URL when available
+      githubUrl: "" // TODO: add Google Drive or GitHub URL when available
+    },
+    {
+      id: "industry-4-oee-monitoring",
+      name: "Industry 4.0 OEE Monitoring System (Hardware Lead)",
+      subtitle: "Real-time manufacturing efficiency platform deployed with Malia Group (Pharmaline), Lebanon.",
+      bullets: [
+        "Built an ESP32-to-Flask-MySQL-React system with RFID login, LCD interface, WebSocket streaming, relay control, and isolated multi-machine support.",
+        "Delivered under no-PLC and limited-access constraints to replace manual tracking with automated IoT-based monitoring."
+      ],
+      tags: ["ESP32", "Flask", "MySQL", "React", "IoT"],
+      driveUrl: "", // TODO: add Google Drive or GitHub URL when available
+      githubUrl: "" // TODO: add Google Drive or GitHub URL when available
+    }
+  ],
+
+  skills: {
+    "Programming": ["Python", "C++", "Java", "Assembly"],
+    "Tools & Systems": ["Linux", "Git"],
+    "Control & Simulation": ["MATLAB", "Simulink", "Simscape", "ROS 2", "Webots", "PyDrake"],
+    "Design & EDA": ["SolidWorks (CSWA)", "AutoCAD", "Quartus", "PSpice"],
+    "Hardware & Prototyping": ["Arduino", "Raspberry Pi", "ESP32", "NI myRIO", "PLC", "3D Printing"],
+    "Core Areas": ["Sensor Fusion", "Control Barrier Functions", "Machine Learning"]
+  },
+
+  education: [
+    {
+      degree: "B.Eng. in Mechatronics Engineering",
+      school: "Lebanese American University",
+      period: "Sep 2022 - Present",
+      gpa: "3.96/4.00",
+      notes: [
+        "Research Track (6 credits of undergraduate research and 3 credits of research methodology).",
+        "IEEE Student Membership."
+      ]
+    }
+  ],
+
+  awards: [
+    "Outstanding Project Award, LAU School of Engineering Projects Day 2025, awarded for the Fuzzy-Controlled Biped Robot.",
+    "Dean's High Distinction.",
+    "Honor Scholarship (30% tuition, CGPA >= 3.8).",
+    "SAT Scholarship (50% tuition, merit-based).",
+    "Certified SolidWorks Associate (CSWA)."
+  ],
+
+  leadership: [
+    {
+      role: "Under-Secretary-General, Logistics & Operations",
+      org: "LAU Simulation Models",
+      period: "Sep 2025 - Present",
+      bullets: [
+        "Direct a team of 40 members, including three Assistant Under-Secretaries-General, to plan and execute four educational simulation programs serving more than 3,000 delegates annually.",
+        "Oversee recruitment, onboarding, weekly team meetings, performance assessments, and ongoing mentorship of team members.",
+        "Previously served as Logistics & Operations Coordinator (Oct 2023 - Jun 2025), supporting large-scale event operations and stakeholder coordination."
+      ]
+    },
+    {
+      role: "Vice President, IEEE Robotics Club",
+      org: "Lebanese American University, Byblos",
+      period: "Sep 2025 - Present",
+      bullets: [
+        "Organized the inaugural VEX Robotics competition at LAU, managing logistics, team coordination, and event operations from concept to execution.",
+        "Delivered a hands-on Arduino workshop to more than 50 attendees, expanding access to robotics education on campus.",
+        "Curated and hosted speaker sessions on emerging robotics topics, including bio-robotics and soft robotics, broadening technical exposure for the student community."
+      ]
+    }
+  ],
+
+  socialLinks: [
+    { label: "Email", icon: "fa-solid fa-envelope", hrefKey: "email", prefix: "mailto:" },
+    { label: "LinkedIn", icon: "fa-brands fa-linkedin", hrefKey: "linkedin" },
+    { label: "GitHub", icon: "fa-brands fa-github", hrefKey: "github" },
+    { label: "Google Scholar", icon: "fa-solid fa-graduation-cap", hrefKey: "googleScholar" }
+  ]
+};
+
+const STATE = {
+  activeTab: "projects",
+  publicationFilter: "all",
+  sectionObserver: null
+};
+
+function byId(id) {
+  return document.getElementById(id);
+}
+
+function esc(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function setDocumentMeta() {
+  document.title = DATA.pageTitle;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta) {
+    meta.setAttribute("content", DATA.metaDescription);
+  }
+  byId("topbar-name").textContent = DATA.name;
+}
+
+function renderTopTabs() {
+  const tabNav = byId("tab-nav");
+  tabNav.innerHTML = DATA.tabs.map((tab) => {
+    return `<button type="button" class="tab-btn" data-tab="${tab.id}">${esc(tab.label)}</button>`;
+  }).join("");
+}
+
+function renderSidebarProfile() {
+  byId("profile-image").src = DATA.profileImage;
+  byId("sidebar-name").textContent = DATA.name;
+  byId("sidebar-role").textContent = DATA.role;
+  byId("sidebar-location").innerHTML = `<i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>${esc(DATA.location)}</span>`;
+  byId("sidebar-affiliation").innerHTML = `<i class="fa-solid fa-building-columns" aria-hidden="true"></i><span>${esc(DATA.affiliation)}</span>`;
+
+  const socialMarkup = DATA.socialLinks.map((link) => {
+    const raw = DATA[link.hrefKey] || "";
+    const href = raw ? `${link.prefix || ""}${raw}` : "";
+
+    if (href) {
+      return `<a class="social-link" href="${esc(href)}" target="_blank" rel="noopener noreferrer"><i class="${link.icon}" aria-hidden="true"></i><span>${esc(link.label)}</span></a>`;
+    }
+
+    return `<span class="social-link social-placeholder"><i class="${link.icon}" aria-hidden="true"></i><span>${esc(link.label)}</span></span>`;
+  }).join("");
+
+  byId("social-links").innerHTML = socialMarkup;
+}
+
+function statusMeta(status) {
+  const map = {
+    accepted: { label: "Accepted", className: "accepted" },
+    "under-review": { label: "Under Review", className: "review" },
+    published: { label: "Published", className: "published" }
+  };
+  return map[status] || { label: status, className: "published" };
+}
+
+function renderProjectLinks(project) {
+  const links = [];
+
+  if (project.driveUrl) {
+    links.push(`<a class="project-link" href="${esc(project.driveUrl)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-folder-open" aria-hidden="true"></i><span>Drive</span></a>`);
+  }
+
+  if (project.githubUrl) {
+    links.push(`<a class="project-link" href="${esc(project.githubUrl)}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span></a>`);
+  }
+
+  if (!links.length) {
+    return `<span class="project-link placeholder-btn"><i class="fa-regular fa-clock" aria-hidden="true"></i><span>Materials coming soon</span></span>`;
+  }
+
+  return links.join("");
+}
+
+function renderProjectsPanel() {
+  const panel = byId("panel-projects");
+  const cards = DATA.projects.map((project) => {
+    const bullets = project.bullets.map((bullet) => `<li>${esc(bullet)}</li>`).join("");
+    const tags = project.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join("");
+
+    return `
+      <article class="card project-card" id="${esc(project.id)}">
+        <h3>${esc(project.name)}</h3>
+        <p class="project-subtitle"><em>${esc(project.subtitle)}</em></p>
+        <ul class="bullets">${bullets}</ul>
+        <div class="tag-wrap">${tags}</div>
+        <div class="project-links">${renderProjectLinks(project)}</div>
+      </article>
+    `;
+  }).join("");
+
+  panel.innerHTML = `
+    <h2 class="section-title">Projects</h2>
+    <hr class="section-divider">
+    ${cards}
+  `;
+}
+
+function renderPublicationsPanel() {
+  const panel = byId("panel-publications");
+
+  const cards = DATA.publications.map((pub, index) => {
+    const status = statusMeta(pub.status);
+    const titleMarkup = pub.url
+      ? `<a href="${esc(pub.url)}" target="_blank" rel="noopener noreferrer">${esc(pub.title)}</a>`
+      : `<span>${esc(pub.title)}</span>`;
+
+    return `
+      <article class="card publication-card" data-status="${esc(pub.status)}" data-index="${index}">
+        <h3 class="pub-title">${titleMarkup}</h3>
+        <p class="pub-meta">${esc(pub.venue)} ${esc(pub.year)}</p>
+        <p class="pub-auth">${esc(pub.authors)}</p>
+        <span class="badge ${status.className}">${status.label}</span>
+        <div>
+          <button type="button" class="abstract-toggle" aria-expanded="false">Show abstract</button>
+          <p class="abstract-body">${esc(pub.abstract)}</p>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  panel.innerHTML = `
+    <h2 class="section-title">Publications</h2>
+    <hr class="section-divider">
+    ${cards}
+  `;
+}
+
+function renderTimelineCards(entries, titleKey) {
+  return entries.map((entry) => {
+    const bullets = (entry.bullets || []).map((bullet) => `<li>${esc(bullet)}</li>`).join("");
+
+    return `
+      <article class="card">
+        <div class="head">
+          <h3>${esc(entry[titleKey])}</h3>
+          <span class="period">${esc(entry.period || "")}</span>
+        </div>
+        <p class="org"><em>${esc(entry.org || "")}</em></p>
+        <ul class="bullets">${bullets}</ul>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderEducationCards() {
+  return DATA.education.map((entry) => {
+    const notes = (entry.notes || []).map((note) => `<li>${esc(note)}</li>`).join("");
+
+    return `
+      <article class="card">
+        <div class="head">
+          <h3>${esc(entry.degree)}</h3>
+          <span class="period">${esc(entry.period)}</span>
+        </div>
+        <p class="org"><em>${esc(entry.school)}</em></p>
+        <p class="muted"><strong>GPA:</strong> ${esc(entry.gpa)}</p>
+        <ul class="bullets" style="margin-top:10px;">${notes}</ul>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderSkillsCards() {
+  return Object.entries(DATA.skills).map(([category, list]) => {
+    const pills = list.map((item) => `<span class="pill">${esc(item)}</span>`).join("");
+
+    return `
+      <article class="skill-card">
+        <h3>${esc(category)}</h3>
+        <div>${pills}</div>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderAwardsList() {
+  return `<ul class="awards">${DATA.awards.map((award) => `<li><i class="fa-solid fa-trophy" aria-hidden="true"></i><span>${esc(award)}</span></li>`).join("")}</ul>`;
+}
+
+function renderCvHeaderCard() {
+  if (!DATA.cv) {
+    return `<article class="card"><p class="muted">CV file not configured yet.</p></article>`;
+  }
+
+  return `
+    <article class="card">
+      <p class="muted">Download or open the latest CV PDF.</p>
+      <div class="btns">
+        <a class="btn" href="${esc(DATA.cv)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-lines" aria-hidden="true"></i><span>Open CV</span></a>
+        <a class="btn" href="${esc(DATA.cv)}" download><i class="fa-solid fa-download" aria-hidden="true"></i><span>Download CV</span></a>
+      </div>
+    </article>
+  `;
+}
+
+function renderCvPanel() {
+  const panel = byId("panel-cvexp");
+
+  panel.innerHTML = `
+    <h2 class="section-title">CV & Experience</h2>
+    <hr class="section-divider">
+    ${renderCvHeaderCard()}
+
+    <section id="cv-education" class="cv-subsection">
+      <h3 class="subsection-title">Education</h3>
+      ${renderEducationCards()}
+    </section>
+
+    <section id="cv-research" class="cv-subsection">
+      <h3 class="subsection-title">Research Experience</h3>
+      ${renderTimelineCards(DATA.research, "title")}
+    </section>
+
+    <section id="cv-teaching" class="cv-subsection">
+      <h3 class="subsection-title">Teaching Experience</h3>
+      ${renderTimelineCards(DATA.teaching, "role")}
+    </section>
+
+    <section id="cv-leadership" class="cv-subsection">
+      <h3 class="subsection-title">Leadership</h3>
+      ${renderTimelineCards(DATA.leadership, "role")}
+    </section>
+
+    <section id="cv-skills" class="cv-subsection">
+      <h3 class="subsection-title">Skills</h3>
+      <div class="skills-grid">${renderSkillsCards()}</div>
+    </section>
+
+    <section id="cv-awards" class="cv-subsection">
+      <h3 class="subsection-title">Awards</h3>
+      ${renderAwardsList()}
+    </section>
+  `;
+}
+
+function renderPanels() {
+  renderProjectsPanel();
+  renderPublicationsPanel();
+  renderCvPanel();
+}
+
+function setActiveTabButton(tabId) {
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.tab === tabId);
+  });
+}
+
+function setActivePanel(tabId) {
+  document.querySelectorAll(".panel").forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.panel === tabId);
+  });
+}
+
+function setSubnavActive(targetId) {
+  document.querySelectorAll("#sidebar-subnav .nav-link[data-target]").forEach((link) => {
+    link.classList.toggle("active", link.dataset.target === targetId);
+  });
+}
+
+function syncPublicationFilterButtons() {
+  document.querySelectorAll("#sidebar-subnav .nav-link[data-filter]").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.filter === STATE.publicationFilter);
+  });
+}
+
+function filterPublications(status) {
+  STATE.publicationFilter = status;
+
+  document.querySelectorAll(".publication-card").forEach((card) => {
+    const visible = status === "all" || card.dataset.status === status;
+    card.style.display = visible ? "" : "none";
+  });
+
+  syncPublicationFilterButtons();
+}
+
+function clearSectionObserver() {
+  if (STATE.sectionObserver) {
+    STATE.sectionObserver.disconnect();
+    STATE.sectionObserver = null;
+  }
+}
+
+function setupSectionObserver(targetIds) {
+  clearSectionObserver();
+
+  const root = byId("main-content");
+  const targets = targetIds.map((id) => byId(id)).filter(Boolean);
+
+  if (!targets.length) {
+    return;
+  }
+
+  const visibility = new Map();
+
+  STATE.sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        visibility.set(entry.target.id, entry.intersectionRatio);
+      } else {
+        visibility.delete(entry.target.id);
+      }
+    });
+
+    if (visibility.size > 0) {
+      const activeId = Array.from(visibility.entries()).sort((a, b) => b[1] - a[1])[0][0];
+      setSubnavActive(activeId);
+      return;
+    }
+
+    let fallbackId = targetIds[0];
+    const rootTop = root.getBoundingClientRect().top;
+
+    targetIds.forEach((id) => {
+      const el = byId(id);
+      if (!el) {
+        return;
+      }
+      if (el.getBoundingClientRect().top - rootTop <= 120) {
+        fallbackId = id;
+      }
+    });
+
+    setSubnavActive(fallbackId);
+  }, {
+    root,
+    threshold: [0.12, 0.35, 0.6],
+    rootMargin: "-8% 0px -60% 0px"
+  });
+
+  targets.forEach((el) => STATE.sectionObserver.observe(el));
+}
+
+function scrollToTarget(id) {
+  const target = byId(id);
+  if (!target) {
+    return;
+  }
+
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  setSubnavActive(id);
+}
+
+function updateSidebarNav(tabId) {
+  const title = byId("subnav-title");
+  const container = byId("sidebar-subnav");
+
+  if (tabId === "projects") {
+    title.textContent = "Projects";
+
+    container.innerHTML = `
+      <ul class="subnav-list">
+        ${DATA.projects.map((project) => `<li><button type="button" class="nav-link subnav-btn" data-target="${esc(project.id)}">${esc(project.name)}</button></li>`).join("")}
+      </ul>
+    `;
+
+    setSubnavActive(DATA.projects[0].id);
+    setupSectionObserver(DATA.projects.map((project) => project.id));
+    return;
+  }
+
+  if (tabId === "publications") {
+    title.textContent = "Publications";
+
+    container.innerHTML = `
+      <ul class="subnav-list">
+        <li><button type="button" class="nav-link subnav-btn" data-filter="all">All</button></li>
+        <li><button type="button" class="nav-link subnav-btn" data-filter="accepted">Accepted</button></li>
+        <li><button type="button" class="nav-link subnav-btn" data-filter="under-review">Under Review</button></li>
+      </ul>
+    `;
+
+    clearSectionObserver();
+    syncPublicationFilterButtons();
+    return;
+  }
+
+  title.textContent = "CV & Experience";
+  container.innerHTML = `
+    <ul class="subnav-list">
+      ${DATA.cvSubsections.map((item) => `<li><button type="button" class="nav-link subnav-btn" data-target="${esc(item.id)}">${esc(item.label)}</button></li>`).join("")}
+    </ul>
+  `;
+
+  setSubnavActive(DATA.cvSubsections[0].id);
+  setupSectionObserver(DATA.cvSubsections.map((item) => item.id));
+}
+
+function switchTab(tabId, resetScroll) {
+  STATE.activeTab = tabId;
+
+  setActiveTabButton(tabId);
+  setActivePanel(tabId);
+  updateSidebarNav(tabId);
+
+  if (resetScroll) {
+    byId("main-content").scrollTop = 0;
+  }
+
+  if (tabId === "publications") {
+    filterPublications(STATE.publicationFilter);
+  }
+}
+
+function bindHandlers() {
+  byId("tab-nav").addEventListener("click", (event) => {
+    const button = event.target.closest(".tab-btn");
+    if (!button) {
+      return;
+    }
+    switchTab(button.dataset.tab, true);
+  });
+
+  byId("sidebar-subnav").addEventListener("click", (event) => {
+    const button = event.target.closest(".nav-link");
+    if (!button) {
+      return;
+    }
+
+    if (button.dataset.filter) {
+      filterPublications(button.dataset.filter);
+      return;
+    }
+
+    if (button.dataset.target) {
+      scrollToTarget(button.dataset.target);
+    }
+  });
+
+  byId("panel-publications").addEventListener("click", (event) => {
+    const button = event.target.closest(".abstract-toggle");
+    if (!button) {
+      return;
+    }
+
+    const body = button.nextElementSibling;
+    if (!body) {
+      return;
+    }
+
+    const open = body.classList.toggle("open");
+    button.textContent = open ? "Hide abstract" : "Show abstract";
+    button.setAttribute("aria-expanded", String(open));
+  });
+}
+
+function render() {
+  setDocumentMeta();
+  renderTopTabs();
+  renderSidebarProfile();
+  renderPanels();
+  bindHandlers();
+  switchTab("projects", false);
+}
+
+document.addEventListener("DOMContentLoaded", render);
+</script>
+</body>
+</html>
