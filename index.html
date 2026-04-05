@@ -433,9 +433,22 @@ function renderTimeline() {
     `;
   }).join("");
 
+  const cvActions = DATA.cv
+    ? `
+      <article class="card">
+        <p class="muted">Open a quick view or download the latest CV.</p>
+        <div class="btns">
+          <a class="btn" href="${esc(DATA.cv)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-lines" aria-hidden="true"></i><span>Quick View CV</span></a>
+          <a class="btn" href="${esc(DATA.cv)}" download><i class="fa-solid fa-download" aria-hidden="true"></i><span>Download CV</span></a>
+        </div>
+      </article>
+    `
+    : "";
+
   panel.innerHTML = `
     <h2 class="section-title">CV & Experience</h2>
     <hr class="section-divider">
+    ${cvActions}
     <div class="timeline-track">
       ${entries}
     </div>
