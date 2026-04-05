@@ -277,11 +277,36 @@ I am pursuing graduate study in robotics and control engineering to develop safe
 const STATE = {
   activeTab: "projects",
   publicationFilter: "all",
-  sectionObserver: null
+  sectionObserver: null,
+  sectionScrollHandler: null
 };
 
 function byId(id) {
   return document.getElementById(id);
+}
+
+function isMobileViewport() {
+  return window.matchMedia("(max-width: 640px)").matches;
+}
+
+function ensureMobileSubnavContainer() {
+  const main = byId("main-content");
+  if (!main || byId("mobile-subnav")) {
+    return;
+  }
+
+  const mobileSubnav = document.createElement("div");
+  mobileSubnav.id = "mobile-subnav";
+  mobileSubnav.className = "mobile-subnav";
+  mobileSubnav.setAttribute("aria-label", "Section navigation");
+  main.insertBefore(mobileSubnav, main.firstChild);
+}
+
+function getActiveSubnavContainer() {
+  if (isMobileViewport()) {
+    return byId("mobile-subnav");
+  }
+  return byId("sidebar-subnav");
 }
 
 function esc(value) {
@@ -538,13 +563,13 @@ function setActivePanel(tabId) {
 }
 
 function setSubnavActive(targetId) {
-  document.querySelectorAll("#sidebar-subnav .nav-link[data-target]").forEach((link) => {
+  document.querySelectorAll("#sidebar-subnav .nav-link[data-target], #mobile-subnav .nav-link[data-target]").forEach((link) => {
     link.classList.toggle("active", link.dataset.target === targetId);
   });
 }
 
 function syncPublicationFilterButtons() {
-  document.querySelectorAll("#sidebar-subnav .nav-link[data-filter]").forEach((btn) => {
+  document.querySelectorAll("#sidebar-subnav .nav-link[data-filter], #mobile-subnav .nav-link[data-filter]").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.filter === STATE.publicationFilter);
   });
 }
@@ -565,6 +590,14 @@ function clearSectionObserver() {
     STATE.sectionObserver.disconnect();
     STATE.sectionObserver = null;
   }
+
+  if (STATE.sectionScrollHandler) {
+    const root = byId("main-content");
+    if (root) {
+      root.removeEventListener("scroll", STATE.sectionScrollHandler);
+    }
+    STATE.sectionScrollHandler = null;
+  }
 }
 
 function setupSectionObserver(targetIds) {
@@ -578,6 +611,24 @@ function setupSectionObserver(targetIds) {
   }
 
   const visibility = new Map();
+  const activationOffset = isMobileViewport() ? 180 : 120;
+
+  const updateActiveByScrollPosition = () => {
+    let fallbackId = targetIds[0];
+    const rootTop = root.getBoundingClientRect().top;
+
+    targetIds.forEach((id) => {
+      const el = byId(id);
+      if (!el) {
+        return;
+      }
+      if (el.getBoundingClientRect().top - rootTop <= activationOffset) {
+        fallbackId = id;
+      }
+    });
+
+    setSubnavActive(fallbackId);
+  };
 
   STATE.sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -594,27 +645,29 @@ function setupSectionObserver(targetIds) {
       return;
     }
 
-    let fallbackId = targetIds[0];
-    const rootTop = root.getBoundingClientRect().top;
-
-    targetIds.forEach((id) => {
-      const el = byId(id);
-      if (!el) {
-        return;
-      }
-      if (el.getBoundingClientRect().top - rootTop <= 120) {
-        fallbackId = id;
-      }
-    });
-
-    setSubnavActive(fallbackId);
+    updateActiveByScrollPosition();
   }, {
     root,
     threshold: [0.12, 0.35, 0.6],
-    rootMargin: "-8% 0px -60% 0px"
+    rootMargin: isMobileViewport() ? "-50px 0px -55% 0px" : "-8% 0px -60% 0px"
   });
 
   targets.forEach((el) => STATE.sectionObserver.observe(el));
+
+  let ticking = false;
+  STATE.sectionScrollHandler = () => {
+    if (ticking) {
+      return;
+    }
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateActiveByScrollPosition();
+      ticking = false;
+    });
+  };
+
+  root.addEventListener("scroll", STATE.sectionScrollHandler, { passive: true });
+  updateActiveByScrollPosition();
 }
 
 function scrollToTarget(id) {
@@ -629,7 +682,11 @@ function scrollToTarget(id) {
 
 function updateSidebarNav(tabId) {
   const title = byId("subnav-title");
-  const container = byId("sidebar-subnav");
+  const container = getActiveSubnavContainer();
+
+  if (!container) {
+    return;
+  }
 
   if (tabId === "projects") {
     title.textContent = "Projects";
@@ -689,15 +746,7 @@ function switchTab(tabId, resetScroll) {
 }
 
 function bindHandlers() {
-  byId("tab-nav").addEventListener("click", (event) => {
-    const button = event.target.closest(".tab-btn");
-    if (!button) {
-      return;
-    }
-    switchTab(button.dataset.tab, true);
-  });
-
-  byId("sidebar-subnav").addEventListener("click", (event) => {
+  const handleSubnavClick = (event) => {
     const button = event.target.closest(".nav-link");
     if (!button) {
       return;
@@ -711,7 +760,25 @@ function bindHandlers() {
     if (button.dataset.target) {
       scrollToTarget(button.dataset.target);
     }
+  };
+
+  byId("tab-nav").addEventListener("click", (event) => {
+    const button = event.target.closest(".tab-btn");
+    if (!button) {
+      return;
+    }
+    switchTab(button.dataset.tab, true);
   });
+
+  const sidebarSubnav = byId("sidebar-subnav");
+  if (sidebarSubnav) {
+    sidebarSubnav.addEventListener("click", handleSubnavClick);
+  }
+
+  const mobileSubnav = byId("mobile-subnav");
+  if (mobileSubnav) {
+    mobileSubnav.addEventListener("click", handleSubnavClick);
+  }
 
   byId("panel-publications").addEventListener("click", (event) => {
     const button = event.target.closest(".abstract-toggle");
@@ -728,12 +795,24 @@ function bindHandlers() {
     button.textContent = open ? "Hide abstract" : "Show abstract";
     button.setAttribute("aria-expanded", String(open));
   });
+
+  let previousMobileState = isMobileViewport();
+  window.addEventListener("resize", () => {
+    const currentMobileState = isMobileViewport();
+    if (currentMobileState === previousMobileState) {
+      return;
+    }
+
+    previousMobileState = currentMobileState;
+    updateSidebarNav(STATE.activeTab);
+  });
 }
 
 function render() {
   setDocumentMeta();
   renderTopTabs();
   renderSidebarProfile();
+  ensureMobileSubnavContainer();
   renderPanels();
   bindHandlers();
   switchTab("projects", false);
