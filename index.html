@@ -67,13 +67,70 @@ I am pursuing graduate study in robotics and control engineering to develop safe
     { id: "cvexp", label: "CV & Experience" }
   ],
 
-  cvSubsections: [
-    { id: "cv-education", label: "Education" },
-    { id: "cv-research", label: "Research" },
-    { id: "cv-teaching", label: "Teaching" },
-    { id: "cv-leadership", label: "Leadership" },
-    { id: "cv-skills", label: "Skills" },
-    { id: "cv-awards", label: "Awards" }
+  timeline: [
+    {
+      id: "teaching-lau",
+      period: "Jan 2026 / Sep 2024 - Present",
+      tag: "Teaching",
+      title: "Making Hard Things Click, LAU",
+      challenge: "Control systems and digital logic are the courses people fear most. I kept seeing the same struggle repeat itself, and I did not want students to hit that wall alone.",
+      impact: "I was appointed as a Teaching Assistant for Mechatronics System Design 2. I also run LAU's official tutoring support across control systems, logic design, and microprocessors, and my tutees saw an average grade improvement of 30%.",
+      lesson: "Friends first told me I made hard ideas feel easy, and that stayed with me; teaching is about finding the angle that clicks for each person."
+    },
+    {
+      id: "lau-safety-guarantees",
+      period: "Oct 2025 - Present",
+      tag: "Research",
+      title: "Safety Guarantees for Robots That Move in the Real World, LAU",
+      challenge: "Real robots face disturbances and sensing uncertainty that clean theory often ignores. I wanted to build safety filters that hold up when the math meets real-world messiness.",
+      impact: "I developed a sampled-data control barrier function safety filter in MATLAB, then extended it to time-varying obstacles and variable sampling. That work became our submission to IEEE Control Systems Letters.",
+      lesson: "A proof on paper is only the beginning; the real engineering lives in getting the controller to behave on a digital twin."
+    },
+    {
+      id: "lau-leadership-ieee",
+      period: "Sep 2025 - Present",
+      tag: "Leadership",
+      title: "Leading People Is a Different Kind of Engineering, LAU",
+      challenge: "I was directing a team of 40 across four simulation programs serving more than 3000 delegates while helping launch the first VEX Robotics competition at LAU from scratch.",
+      impact: "I built and ran recruitment, onboarding, weekly meetings, and performance reviews for the logistics team. I also delivered an Arduino workshop to 50+ attendees and hosted sessions on bio-robotics and soft robotics.",
+      lesson: "You cannot lead a team the way you debug a circuit; every person needs a different approach to feedback, trust, and growth."
+    },
+    {
+      id: "femto-st",
+      period: "May 2025 - Sep 2025",
+      tag: "Research Internship",
+      title: "Building Stability Sensing for Modular Robots, France",
+      challenge: "I moved to Montbeliard for the summer and stepped into a problem I had never touched before. How do you tell that a modular robot is about to break apart in real time using only onboard sensors?",
+      impact: "I designed a stability metric combining geometric margins with FSR and IMU data, and built three algorithmic variants that reached 90%+ accuracy across ten cantilever trials. I also ported the work from ESP32 hardware to Webots, which led to an AINA 2026 acceptance and an IROS 2026 submission.",
+      lesson: "I learned that adapting fast while uncomfortable is a skill, and the first hard weeks in a new research environment can become your biggest growth."
+    },
+    {
+      id: "kare-exoskeleton",
+      period: "2025",
+      tag: "Project",
+      title: "Technology Should Make People's Lives Better, Not Just Smarter",
+      challenge: "Robotics can become abstract very quickly. We chose a more human starting point by asking what happens when the system is built for someone who is in pain, and my partner's knee injury made that question real.",
+      impact: "I designed a single-joint belt-driven BLDC exoskeleton under 2 kg and completed the mechanical design plus FEA with a factor of safety near 6.7. I also specified multimodal sensing with EMG, EDA, and PPG streaming to a Raspberry Pi for real-time torque adaptation.",
+      lesson: "The best project brief I have ever worked from was one simple line: what if the robot knew you were hurting?"
+    },
+    {
+      id: "basil-quadruped",
+      period: "2025",
+      tag: "Project",
+      title: "Teaching a Robot Dog to Stand, Then Walk",
+      challenge: "Legged locomotion is one of the hardest open problems in robotics. We wanted to go from zero to a working trot controller without access to a physical Spot.",
+      impact: "I modeled Boston Dynamics Spot in Drake as a floating-base multibody system, built standing controllers, then developed an underactuated diagonal-trot controller validated through inverse dynamics and real-time MPC at 100 Hz.",
+      lesson: "Simulation is not a shortcut; when it is done right, it is just as demanding as hardware and forces you to understand the physics deeply."
+    },
+    {
+      id: "lau-education-awards",
+      period: "Sep 2022 - Present",
+      tag: "Education",
+      title: "B.Eng. Mechatronics Engineering, Lebanese American University",
+      challenge: "Starting university in Lebanon in 2022 meant building my research path inside real resource constraints. I knew I had to move toward hard problems that matter to people if I wanted to help shape the future.",
+      impact: "I built a 3.96/4.00 CGPA, received the SAT Scholarship (50% tuition), the Honor Scholarship (30% tuition each year), and Dean's High Distinction. I also earned the Outstanding Project Award for the Fuzzy-Controlled Biped Robot, completed CSWA certification, and reached one accepted paper with two under review.",
+      lesson: "Constraints are not the obstacle; they are why the work matters and why I keep choosing ambitious robotics problems."
+    }
   ],
 
   publications: [
@@ -103,51 +160,6 @@ I am pursuing graduate study in robotics and control engineering to develop safe
       authors: "H. Bitar, J. Bassil, N. Maalouf, B. Piranda, A. Makhoul",
       url: "",
       abstract: "Abstract withheld while submission is under review for IROS 2026. A full abstract and publication links will be added when the review cycle is complete."
-    }
-  ],
-
-  research: [
-    {
-      title: "Undergraduate Researcher",
-      org: "Lebanese American University, Byblos",
-      period: "Oct 2025 - Present",
-      bullets: [
-        "Developed a sampled-data control barrier function safety filter in MATLAB for mobile-robot navigation under bounded disturbances and sensing uncertainty, contributing to a submission to IEEE Control Systems Letters.",
-        "Extended the framework to time-varying obstacles and variable sampling, improving safety guarantees in dynamic environments while reducing computation when robots operate far from constraints.",
-        "Validated the controller on the QBot digital twin in Simulink using closed-loop simulations with odometry- and IMU-based state estimation."
-      ]
-    },
-    {
-      title: "Research Intern",
-      org: "FEMTO-ST Institute, Montbeliard, France",
-      period: "May 2025 - Sep 2025",
-      bullets: [
-        "Designed a stability metric for modular robotic systems by combining geometric margins with FSR and IMU data, enabling robots to detect and prevent structural failure in real time.",
-        "Built and validated three algorithmic variants that achieved more than 90% accuracy across ten cantilever trials.",
-        "Ported algorithms from embedded ESP32 hardware to the Webots simulator, enabling scalability tests across more than ten module configurations; results contributed to an AINA 2026 acceptance and an IROS 2026 submission."
-      ]
-    }
-  ],
-
-  teaching: [
-    {
-      role: "Teaching Assistant, Mechatronics System Design 2",
-      org: "Lebanese American University, Byblos",
-      period: "Jan 2026 - Present",
-      bullets: [
-        "Support course delivery by proctoring exams, correcting assignments, and holding office hours to assist students with hands-on mechatronics design challenges.",
-        "Appointed by the department based on academic performance, providing direct support to the course instructor and reinforcing student understanding of integrated mechanical and electronic system design."
-      ]
-    },
-    {
-      role: "Academic Tutor, Control Systems, Logic Design, and Microprocessors",
-      org: "Lebanese American University, Byblos",
-      period: "Sep 2024 - Present",
-      bullets: [
-        "Mentor students individually and in groups through LAU's official tutoring program, contributing to an average grade improvement of 30% across tutees.",
-        "Adapt explanations to varied learning styles and knowledge gaps, helping students build confidence in mathematically intensive subjects such as state-space control and digital logic.",
-        "Selected by the university tutoring office based on academic standing and peer feedback, reflecting strong communication skills and the ability to explain technical concepts clearly."
-      ]
     }
   ],
 
@@ -214,59 +226,6 @@ I am pursuing graduate study in robotics and control engineering to develop safe
     }
   ],
 
-  skills: {
-    "Programming": ["Python", "C++", "Java", "Assembly"],
-    "Tools & Systems": ["Linux", "Git"],
-    "Control & Simulation": ["MATLAB", "Simulink", "Simscape", "ROS 2", "Webots", "PyDrake"],
-    "Design & EDA": ["SolidWorks (CSWA)", "AutoCAD", "Quartus", "PSpice"],
-    "Hardware & Prototyping": ["Arduino", "Raspberry Pi", "ESP32", "NI myRIO", "PLC", "3D Printing"],
-    "Core Areas": ["Sensor Fusion", "Control Barrier Functions", "Machine Learning"]
-  },
-
-  education: [
-    {
-      degree: "B.Eng. in Mechatronics Engineering",
-      school: "Lebanese American University",
-      period: "Sep 2022 - Present",
-      gpa: "3.96/4.00",
-      notes: [
-        "Research Track (6 credits of undergraduate research and 3 credits of research methodology).",
-        "IEEE Student Membership."
-      ]
-    }
-  ],
-
-  awards: [
-    "Outstanding Project Award, LAU School of Engineering Projects Day 2025, awarded for the Fuzzy-Controlled Biped Robot.",
-    "Dean's High Distinction.",
-    "Honor Scholarship (30% tuition, CGPA >= 3.8).",
-    "SAT Scholarship (50% tuition, merit-based).",
-    "Certified SolidWorks Associate (CSWA)."
-  ],
-
-  leadership: [
-    {
-      role: "Under-Secretary-General, Logistics & Operations",
-      org: "LAU Simulation Models",
-      period: "Sep 2025 - Present",
-      bullets: [
-        "Direct a team of 40 members, including three Assistant Under-Secretaries-General, to plan and execute four educational simulation programs serving more than 3,000 delegates annually.",
-        "Oversee recruitment, onboarding, weekly team meetings, performance assessments, and ongoing mentorship of team members.",
-        "Previously served as Logistics & Operations Coordinator (Oct 2023 - Jun 2025), supporting large-scale event operations and stakeholder coordination."
-      ]
-    },
-    {
-      role: "Vice President, IEEE Robotics Club",
-      org: "Lebanese American University, Byblos",
-      period: "Sep 2025 - Present",
-      bullets: [
-        "Organized the inaugural VEX Robotics competition at LAU, managing logistics, team coordination, and event operations from concept to execution.",
-        "Delivered a hands-on Arduino workshop to more than 50 attendees, expanding access to robotics education on campus.",
-        "Curated and hosted speaker sessions on emerging robotics topics, including bio-robotics and soft robotics, broadening technical exposure for the student community."
-      ]
-    }
-  ],
-
   socialLinks: [
     { label: "Email", icon: "fa-solid fa-envelope", hrefKey: "email", prefix: "mailto:" },
     { label: "LinkedIn", icon: "fa-brands fa-linkedin", hrefKey: "linkedin" },
@@ -317,6 +276,14 @@ function esc(value) {
     .replace(/>/g, "&gt;")
     .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function slugifyId(value) {
+  return String(value)
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function setDocumentMeta() {
@@ -437,118 +404,48 @@ function renderPublicationsPanel() {
   `;
 }
 
-function renderTimelineCards(entries, titleKey) {
-  return entries.map((entry) => {
-    const bullets = (entry.bullets || []).map((bullet) => `<li>${esc(bullet)}</li>`).join("");
-
-    return `
-      <article class="card">
-        <div class="head">
-          <h3>${esc(entry[titleKey])}</h3>
-          <span class="period">${esc(entry.period || "")}</span>
-        </div>
-        <p class="org"><em>${esc(entry.org || "")}</em></p>
-        <ul class="bullets">${bullets}</ul>
-      </article>
-    `;
-  }).join("");
-}
-
-function renderEducationCards() {
-  return DATA.education.map((entry) => {
-    const notes = (entry.notes || []).map((note) => `<li>${esc(note)}</li>`).join("");
-
-    return `
-      <article class="card">
-        <div class="head">
-          <h3>${esc(entry.degree)}</h3>
-          <span class="period">${esc(entry.period)}</span>
-        </div>
-        <p class="org"><em>${esc(entry.school)}</em></p>
-        <p class="muted"><strong>GPA:</strong> ${esc(entry.gpa)}</p>
-        <ul class="bullets" style="margin-top:10px;">${notes}</ul>
-      </article>
-    `;
-  }).join("");
-}
-
-function renderSkillsCards() {
-  return Object.entries(DATA.skills).map(([category, list]) => {
-    const pills = list.map((item) => `<span class="pill">${esc(item)}</span>`).join("");
-
-    return `
-      <article class="skill-card">
-        <h3>${esc(category)}</h3>
-        <div>${pills}</div>
-      </article>
-    `;
-  }).join("");
-}
-
-function renderAwardsList() {
-  return `<ul class="awards">${DATA.awards.map((award) => `<li><i class="fa-solid fa-trophy" aria-hidden="true"></i><span>${esc(award)}</span></li>`).join("")}</ul>`;
-}
-
-function renderCvHeaderCard() {
-  if (!DATA.cv) {
-    return `<article class="card"><p class="muted">CV file not configured yet.</p></article>`;
-  }
-
-  return `
-    <article class="card">
-      <p class="muted">Download or open the latest CV PDF.</p>
-      <div class="btns">
-        <a class="btn" href="${esc(DATA.cv)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-lines" aria-hidden="true"></i><span>Open CV</span></a>
-        <a class="btn" href="${esc(DATA.cv)}" download><i class="fa-solid fa-download" aria-hidden="true"></i><span>Download CV</span></a>
-      </div>
-    </article>
-  `;
-}
-
-function renderCvPanel() {
+function renderTimeline() {
   const panel = byId("panel-cvexp");
+
+  const entries = DATA.timeline.map((entry) => {
+    const anchorId = slugifyId(entry.id);
+
+    return `
+      <article class="card timeline-entry" id="${esc(anchorId)}">
+        <div class="timeline-meta">
+          <span class="timeline-period">${esc(entry.period)}</span>
+          <span class="pill">${esc(entry.tag)}</span>
+        </div>
+        <h3 class="timeline-title">${esc(entry.title)}</h3>
+        <div class="timeline-block">
+          <p class="timeline-label">The Challenge</p>
+          <p class="timeline-text">${esc(entry.challenge)}</p>
+        </div>
+        <div class="timeline-block">
+          <p class="timeline-label">What Came Of It</p>
+          <p class="timeline-text">${esc(entry.impact)}</p>
+        </div>
+        <div class="timeline-block">
+          <p class="timeline-label">What I Took Away</p>
+          <p class="timeline-text">${esc(entry.lesson)}</p>
+        </div>
+      </article>
+    `;
+  }).join("");
 
   panel.innerHTML = `
     <h2 class="section-title">CV & Experience</h2>
     <hr class="section-divider">
-    ${renderCvHeaderCard()}
-
-    <section id="cv-education" class="cv-subsection">
-      <h3 class="subsection-title">Education</h3>
-      ${renderEducationCards()}
-    </section>
-
-    <section id="cv-research" class="cv-subsection">
-      <h3 class="subsection-title">Research Experience</h3>
-      ${renderTimelineCards(DATA.research, "title")}
-    </section>
-
-    <section id="cv-teaching" class="cv-subsection">
-      <h3 class="subsection-title">Teaching Experience</h3>
-      ${renderTimelineCards(DATA.teaching, "role")}
-    </section>
-
-    <section id="cv-leadership" class="cv-subsection">
-      <h3 class="subsection-title">Leadership</h3>
-      ${renderTimelineCards(DATA.leadership, "role")}
-    </section>
-
-    <section id="cv-skills" class="cv-subsection">
-      <h3 class="subsection-title">Skills</h3>
-      <div class="skills-grid">${renderSkillsCards()}</div>
-    </section>
-
-    <section id="cv-awards" class="cv-subsection">
-      <h3 class="subsection-title">Awards</h3>
-      ${renderAwardsList()}
-    </section>
+    <div class="timeline-track">
+      ${entries}
+    </div>
   `;
 }
 
 function renderPanels() {
   renderProjectsPanel();
   renderPublicationsPanel();
-  renderCvPanel();
+  renderTimeline();
 }
 
 function setActiveTabButton(tabId) {
@@ -719,15 +616,15 @@ function updateSidebarNav(tabId) {
     return;
   }
 
-  title.textContent = "CV & Experience";
+  title.textContent = "Timeline";
   container.innerHTML = `
     <ul class="subnav-list">
-      ${DATA.cvSubsections.map((item) => `<li><button type="button" class="nav-link subnav-btn" data-target="${esc(item.id)}">${esc(item.label)}</button></li>`).join("")}
+      ${DATA.timeline.map((item) => `<li><button type="button" class="nav-link subnav-btn" data-target="${esc(slugifyId(item.id))}">${esc(item.title)}</button></li>`).join("")}
     </ul>
   `;
 
-  setSubnavActive(DATA.cvSubsections[0].id);
-  setupSectionObserver(DATA.cvSubsections.map((item) => item.id));
+  setSubnavActive(slugifyId(DATA.timeline[0].id));
+  setupSectionObserver(DATA.timeline.map((item) => slugifyId(item.id)));
 }
 
 function switchTab(tabId, resetScroll) {
