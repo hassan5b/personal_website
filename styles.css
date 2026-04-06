@@ -10,8 +10,24 @@
   --topbar-height: 56px;
 }
 
+html[data-theme="light"] {
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --border: #d0d7de;
+  --text-primary: #1f2328;
+  --text-secondary: #656d76;
+  --accent: #0969da;
+  --accent-hover: #0550ae;
+}
+
 * {
   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 html {
@@ -75,6 +91,32 @@ h3 {
 .tab-nav {
   display: flex;
   gap: 0;
+  margin-left: auto;
+}
+
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.theme-toggle:hover {
+  background: rgba(88, 166, 255, 0.08);
+  color: var(--accent);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: rgba(9, 105, 218, 0.08);
 }
 
 .tab-btn {
@@ -90,6 +132,10 @@ h3 {
 }
 
 .tab-btn:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .tab-btn:hover {
   color: var(--text-primary);
 }
 
@@ -177,6 +223,11 @@ h3 {
   color: var(--accent);
 }
 
+[data-theme="light"] .social a:hover,
+[data-theme="light"] .social-link:hover {
+  background: rgba(9, 105, 218, 0.08);
+}
+
 .social-placeholder {
   opacity: 0.4;
   cursor: default;
@@ -234,6 +285,15 @@ h3 {
   color: var(--accent);
   font-weight: 600;
   background: rgba(88, 166, 255, 0.14);
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active {
+  background: rgba(9, 105, 218, 0.08);
+}
+
+[data-theme="light"] .nav-link.active {
+  background: rgba(9, 105, 218, 0.14);
 }
 
 .content {
@@ -583,6 +643,14 @@ h3 {
   background: rgba(88, 166, 255, 0.16);
 }
 
+[data-theme="light"] .btn {
+  background: rgba(9, 105, 218, 0.08);
+}
+
+[data-theme="light"] .btn:hover {
+  background: rgba(9, 105, 218, 0.16);
+}
+
 .muted {
   color: var(--text-secondary);
 }
@@ -643,6 +711,7 @@ h3 {
   .tab-nav {
     order: 3;
     width: 100%;
+    margin-left: 0;
   }
 
   .tab-btn {
@@ -654,6 +723,11 @@ h3 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .theme-toggle {
+    order: 2;
+    margin-left: 0;
   }
 
   .topbar-avatar {
